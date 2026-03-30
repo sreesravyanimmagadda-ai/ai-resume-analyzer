@@ -1,5 +1,6 @@
 # AI Resume Analyzer
-
+🚀 Live Demo (Local):
+Run using Streamlit to interact with the AI Resume Analyzer.
 ## Overview
 
 This project is an AI-powered resume analyzer that compares a candidate's resume with a job description using a Large Language Model.
