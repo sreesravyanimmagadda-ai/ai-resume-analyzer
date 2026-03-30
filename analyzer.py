@@ -1,28 +1,15 @@
-from openai import OpenAI
-
-client = OpenAI()
-
 def analyze_resume(resume_text, job_description):
-    prompt = f"""
-    Analyze the following resume against the job description.
+    resume_words = set(resume_text.lower().split())
+    job_words = set(job_description.lower().split())
 
-    Resume:
-    {resume_text}
+    matched_skills = resume_words.intersection(job_words)
+    missing_skills = job_words - resume_words
 
-    Job Description:
-    {job_description}
+    match_score = len(matched_skills) / len(job_words) * 100 if job_words else 0
 
-    Give:
-    1. Match Score (0-100)
-    2. Missing Skills
-    3. Suggestions to improve
-    """
-
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
-    )
-
-    return response.choices[0].message.content
+    return {
+        "match_score": round(match_score, 2),
+        "matched_skills": list(matched_skills),
+        "missing_skills": list(missing_skills),
+        "suggestions": "Improve by adding missing skills and aligning resume with job description."
+    }
