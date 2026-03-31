@@ -1,4 +1,19 @@
 # AI Resume Analyzer
+
+## Features
+- Resume vs Job Description matching
+- Skill gap analysis
+- AI-based suggestions
+
+## Tech Stack
+- Python
+- Streamlit
+- OpenAI API
+
+## How to Run
+pip install -r requirements.txt
+streamlit run app.py
+
 🚀 Live Demo (Local):
 Run using Streamlit to interact with the AI Resume Analyzer.
 ## Overview
